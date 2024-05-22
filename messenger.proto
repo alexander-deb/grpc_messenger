@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+service Messenger {
+  rpc Register(User) returns (Confirmation) {}
+  rpc SendMessage(Message) returns (Confirmation) {}
+  rpc ChatStream (User) returns (stream Message);
+}
+
+message Empty { }
+
+message User {
+  string nickname_ = 1;
+}
+
+message Message {
+  string from_ = 1;
+  string to_ = 2;
+  string text_ = 3;
+}
+
+message Confirmation {
+  string message_ = 1;
+}
